@@ -1,0 +1,274 @@
+/* ------------------------------------ */
+/* 🌐 ROOT VARIABLES */
+:root {
+  --color-bg-light: #f0f4f8;
+  --color-text-light: #222;
+  --color-bg-dark: #121212;
+  --color-text-dark: #e0e0e0;
+  --color-accent: #4b4b4b;
+  --color-accent-dark: #d1d1d1;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --max-content-width: 900px;
+}
+
+/* ------------------------------------ */
+/* 🔧 GLOBAL STYLES */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.5;
+}
+
+body.dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+
+/* ------------------------------------ */
+/* 🧭 HEADER */
+header {
+  width: 100%;
+  max-width: var(--max-content-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+}
+
+h1 {
+  margin: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* ------------------------------------ */
+/* 🌗 THEME TOGGLE BUTTON */
+button.toggle-theme {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-accent);
+  color: white;
+  transition: background-color 0.3s ease;
+  min-width: 110px;
+}
+
+body.dark button.toggle-theme {
+  background-color: var(--color-accent-dark);
+  color: #222;
+}
+
+/* ------------------------------------ */
+/* 🧠 MAIN CONTENT */
+main {
+  max-width: var(--max-content-width);
+  width: 100%;
+  background: white;
+  color: #222;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px #00a2ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark main {
+  background: #1e1e1e;
+  color: #ddd;
+  box-shadow: 0 4px 15px rgb(187, 187, 187);
+}
+
+/* ------------------------------------ */
+/* ➕ MATH EXPRESSION DISPLAY */
+.math-expression {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  background: #e9f0ff;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  overflow-x: auto;
+  position: relative;
+}
+
+body.dark .math-expression {
+  background: #2a2a2a;
+}
+
+/* ➕ Correct/Incorrect Highlight Effect */
+.math-expression::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: transparent;
+  z-index: 1;
+  transition: width 0.4s ease;
+  border-radius: 6px;
+}
+
+.math-expression.correct::before {
+  background-color: #4caf50;
+  width: 100%;
+}
+
+.math-expression.incorrect::before {
+  background-color: #e74c3c;
+  width: 100%;
+}
+
+.math-expression.error::before {
+  background-color: #f39c12;
+  width: 100%;
+}
+
+/* ✅ Icons Overlay */
+.math-expression::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: white;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease 0.2s;
+}
+
+.math-expression.correct::after {
+  content: '\2713'; /* ✓ */
+  opacity: 1;
+}
+
+.math-expression.incorrect::after {
+  content: '\2717'; /* ✗ */
+  opacity: 1;
+}
+
+.math-expression.error::after {
+  content: '\26A0'; /* ⚠ */
+  opacity: 1;
+}
+
+/* ------------------------------------ */
+/* ✏️ INPUT FIELD */
+.quiz-input {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #3b82f6;
+  outline: none;
+  text-align: center;
+  min-width: 2ch;
+  width: auto;
+  transition: width 0.2s ease-in-out;
+  color: inherit;
+}
+
+body.dark .quiz-input {
+  background-color: transparent;
+  color: white;
+  border-bottom: 2px solid #60a5fa;
+}
+
+.sizer-span {
+  visibility: hidden;
+  position: absolute;
+  white-space: pre;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ------------------------------------ */
+/* 🔢 NUMPAD */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.numpad button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.numpad button:hover {
+  background-color: #ccc;
+}
+
+body.dark .numpad button {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+body.dark .numpad button:hover {
+  background-color: #3a3a3a;
+}
+
+/* ------------------------------------ */
+/* ✅ FEEDBACK */
+.feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* ------------------------------------ */
+/* 📍 FOOTER */
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: gray;
+  text-align: center;
+  width: 100%;
+  max-width: var(--max-content-width);
+}
+
+/* ------------------------------------ */
+/* 👋 SCORE DISPLAY & HEADER ROW */
+.hand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hand h2 {
+  margin: 0.5rem;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

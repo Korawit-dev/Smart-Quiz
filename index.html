@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Quiz | Bacis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Smart Quiz</h1>
+    <button class="toggle-theme">Dark Mode</button>
+  </header>
+
+  <main>
+    <div class="hand">
+      <h2>Example Math Problem</h2>
+      <div class="score">
+        <p id="feedback" class="feedback">&ZeroWidthSpace;</p>
+        <p id="scoreDisplay" class="feedback">Score: 0</p>
+      </div>
+    </div>
+
+    <div class="math-expression">
+      <span id="question">Loading...</span>
+      <input type="text" id="quizInput" class="quiz-input" placeholder="?" readonly />
+      <span id="sizer" class="sizer-span"></span>
+    </div>
+
+    <div class="numpad">
+      <button onclick="addDigit('7')">7</button>
+      <button onclick="addDigit('8')">8</button>
+      <button onclick="addDigit('9')">9</button>
+
+      <button onclick="addDigit('4')">4</button>
+      <button onclick="addDigit('5')">5</button>
+      <button onclick="addDigit('6')">6</button>
+
+      <button onclick="addDigit('1')">1</button>
+      <button onclick="addDigit('2')">2</button>
+      <button onclick="addDigit('3')">3</button>
+
+      <button onclick="addDigit('-')">-</button>
+      <button onclick="addDigit('0')">0</button>
+      <button onclick="addDigit('+')">+</button>
+
+      <button onclick="clearInput()">C</button>
+      <button onclick="skipQuestion()">NEXT</button>
+      <button onclick="checkAnswer()">✓</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Smart Math | Built with HTML, CSS and JS.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
